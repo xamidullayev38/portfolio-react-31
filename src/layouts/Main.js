@@ -5,6 +5,7 @@ import About from '../components/About';
 import Stats from '../components/Stats';
 import Skills from '../components/Skill';
 import Resume from '../components/Resume';
+import Projects from '../components/Projects';
 
 const MainWrapper = styled.div`
     width: 100%;
@@ -22,6 +23,7 @@ export default function Main() {
       <Stats />
       <Skills />
       <Resume />
+      <Projects />
     </MainWrapper>
   )
 }
