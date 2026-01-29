@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   align-items: center;
   background: url(${img}) no-repeat center/cover;
   position: relative;
+  padding: 0 40px;
 
   &::after {
     content: "";
@@ -17,23 +18,48 @@ const Wrapper = styled.div`
     background: #000;
     opacity: 0.35;
   }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+  }
 `;
 
 const Content = styled.div`
   position: relative;
   z-index: 1;
-  padding-left: 40px;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 72px;
   color: white;
   margin-bottom: 10px;
+
+  @media (max-width: 992px) {
+    font-size: 56px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 38px;
+  }
 `;
 
 const SubTitle = styled.p`
   font-size: 28px;
   color: white;
+
+  @media (max-width: 992px) {
+    font-size: 22px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
 const Highlight = styled.span`
@@ -44,9 +70,19 @@ const Highlight = styled.span`
   animation: blink 0.8s infinite;
 
   @keyframes blink {
-    0% { border-color: #149ddd; }
-    50% { border-color: transparent; }
-    100% { border-color: #149ddd; }
+    0% {
+      border-color: #149ddd;
+    }
+    50% {
+      border-color: transparent;
+    }
+    100% {
+      border-color: #149ddd;
+    }
+  }
+
+  @media (max-width: 600px) {
+    border-right: 2px solid #149ddd;
   }
 `;
 
@@ -66,7 +102,7 @@ export default function Hero() {
         setSpeed(120);
 
         if (text === currentWord) {
-          setTimeout(() => setIsDeleting(true), 1000); 
+          setTimeout(() => setIsDeleting(true), 1000);
         }
       } else {
         setText(currentWord.substring(0, text.length - 1));
@@ -87,7 +123,7 @@ export default function Hero() {
       <Content>
         <Title>Alex Smith</Title>
         <SubTitle>
-          I'm <Highlight >{text}</Highlight>
+          I'm <Highlight>{text}</Highlight>
         </SubTitle>
       </Content>
     </Wrapper>

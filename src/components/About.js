@@ -10,26 +10,63 @@ const subtitle =
 const Wrappper = styled.section`
   margin: 80px 20px;
 `;
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+
+  @media (max-width: 992px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
 const Title = styled.h3`
   font-size: 22px;
-  color: black;
   font-weight: bold;
-  letter-spacing: 1.5%;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 const SubTitle = styled.p`
   font-size: 18px;
   font-weight: 300;
-  color: black;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 const Image = styled.img`
+  width: 100%;
   max-width: 383px;
-  max-height: 383px;
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    max-width: 280px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 220px;
+  }
 `;
+
 const InfoGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px 40px;
   margin: 10px 0 5px 0;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
 `;
 
 const InfoItem = styled.div`
@@ -48,6 +85,9 @@ const Arrow = styled.span`
 const Label = styled.span`
   font-weight: 700;
   margin-right: 6px;
+`;
+const TextContent = styled.div`
+  flex: 1;
 `;
 
 const Value = styled.span`
@@ -101,10 +141,13 @@ export default function About() {
   return (
     <Wrappper>
       <SectionTop title={title} subtitle={subtitle} />
-      <div className="d-flex align-items-center gap-4 justify-content-between">
+
+      <Content>
         <Image src={img} alt="profile img" />
-        <div className="d-flex flex-column gap-3">
+
+        <TextContent>
           <Title>UI/UX Designer & Web Developer.</Title>
+
           <SubTitle>
             <i>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -113,27 +156,21 @@ export default function About() {
           </SubTitle>
 
           <InfoGrid>
-            {info.map((item) => {
-              return (
-                <InfoItem key={item.id}>
-                  <Arrow>▷</Arrow>
-                  <Label>{item.name} :</Label>
-                  <Value> {item.content} </Value>
-                </InfoItem>
-              );
-            })}
-
+            {info.map((item) => (
+              <InfoItem key={item.id}>
+                <Arrow>▷</Arrow>
+                <Label>{item.name} :</Label>
+                <Value>{item.content}</Value>
+              </InfoItem>
+            ))}
           </InfoGrid>
 
           <SubTitle>
             Officiis eligendi itaque labore et dolorum mollitia officiis optio
-            vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor
-            incidunt officia tempore. Et eius omnis. Cupiditate ut dicta maxime
-            officiis quidem quia. Sed et consectetur qui quia repellendus itaque
-            neque.
+            vero...
           </SubTitle>
-        </div>
-      </div>
+        </TextContent>
+      </Content>
     </Wrappper>
   );
 }
