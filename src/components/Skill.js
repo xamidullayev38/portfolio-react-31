@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import SectionTop from "../reusables/SectionTop";
 
@@ -17,7 +17,9 @@ const SkillsGrid = styled.div`
   }
 `;
 
-const SkillItem = styled.div``;
+const SkillItem = styled.div`
+  margin-bottom: 20px;
+`;
 
 const SkillTop = styled.div`
   display: flex;
@@ -40,10 +42,13 @@ const Progress = styled.div`
   height: 100%;
   background: #149ddd;
   width: ${props => props.width}%;
-  transition: width 1.2s ease-in-out;
+  transition: width 1.6s ease-in-out;
 `;
 
 export default function Skills() {
+  const sectionRef = useRef(null);
+  const [startAnim, setStartAnim] = useState(false);
+
   const skillsLeft = [
     { name: "HTML", value: 100 },
     { name: "CSS", value: 90 },
@@ -56,8 +61,26 @@ export default function Skills() {
     { name: "Photoshop", value: 55 },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStartAnim(true);
+          observer.disconnect(); 
+        }
+      },
+      { threshold: 0.3 } 
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Section>
+    <Section ref={sectionRef}>
       <SectionTop
         title="Skills"
         subtitle="Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit"
@@ -69,10 +92,10 @@ export default function Skills() {
             <SkillItem key={index}>
               <SkillTop>
                 <span>{skill.name}</span>
-                <span>{skill.value}%</span>
+                <span>{startAnim ? skill.value : 0}%</span>
               </SkillTop>
               <Bar>
-                <Progress width={skill.value} />
+                <Progress width={startAnim ? skill.value : 0} />
               </Bar>
             </SkillItem>
           ))}
@@ -83,10 +106,10 @@ export default function Skills() {
             <SkillItem key={index}>
               <SkillTop>
                 <span>{skill.name}</span>
-                <span>{skill.value}%</span>
+                <span>{startAnim ? skill.value : 0}%</span>
               </SkillTop>
               <Bar>
-                <Progress width={skill.value} />
+                <Progress width={startAnim ? skill.value : 0} />
               </Bar>
             </SkillItem>
           ))}

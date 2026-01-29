@@ -14,7 +14,6 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { IoChevronDown } from "react-icons/io5";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,6 +24,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 30px 20px;
+
+  @media (max-width: 992px) {
+    width: 260px;
+  }
 `;
 
 const ProfilePhoto = styled.div`
@@ -97,7 +100,7 @@ const MenuItem = styled.a`
 
   &:hover {
     opacity: 1;
-    svg{
+    svg {
       color: #149ddd;
     }
   }

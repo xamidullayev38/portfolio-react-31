@@ -6,6 +6,10 @@ import Stats from '../components/Stats';
 import Skills from '../components/Skill';
 import Resume from '../components/Resume';
 import Projects from '../components/Projects';
+import Services from '../components/Services';
+import Testimonials from '../components/Testimonials';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 const MainWrapper = styled.div`
     width: 100%;
@@ -24,6 +28,10 @@ export default function Main() {
       <Skills />
       <Resume />
       <Projects />
+      <Services />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </MainWrapper>
   )
 }

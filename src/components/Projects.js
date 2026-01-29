@@ -12,7 +12,7 @@ import img8 from '../assets/img/p8.png';
 import img9 from '../assets/img/p9.png';
 import img10 from '../assets/img/p10.png';
 import img11 from '../assets/img/p11.png';
-import img12 from '../assets/img/p12.png';
+import img12 from '../assets/img/p12.png';  
 
 
 const Wrapper = styled.section`
@@ -117,7 +117,7 @@ export default function Projects() {
     <Wrapper>
       <SectionTop
         title="Portfolio"
-        subtitle="Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit."
+        subtitle="Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas."
       />
 
       <Filters>
