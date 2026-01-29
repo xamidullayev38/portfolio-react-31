@@ -120,12 +120,15 @@ export default function Hero() {
 
   return (
     <Wrapper>
-      <Content>
-        <Title>Alex Smith</Title>
-        <SubTitle>
-          I'm <Highlight>{text}</Highlight>
-        </SubTitle>
-      </Content>
-    </Wrapper>
+    <Content>
+      <Title className="animate__animated animate__fadeInDown">
+        Alex Smith
+      </Title>
+
+      <SubTitle className="animate__animated animate__fadeInUp animate__delay-1s">
+        I'm <Highlight>{text}</Highlight>
+      </SubTitle>
+    </Content>
+  </Wrapper>
   );
 }

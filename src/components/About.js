@@ -139,14 +139,14 @@ export default function About() {
   ];
 
   return (
-    <Wrappper>
+    <Wrappper className="animate__animated animate__fadeIn">
       <SectionTop title={title} subtitle={subtitle} />
 
       <Content>
-        <Image src={img} alt="profile img" />
+        <Image className="animate__animated animate__fadeInLeft" src={img} alt="profile img" />
 
-        <TextContent>
-          <Title>UI/UX Designer & Web Developer.</Title>
+        <TextContent className="animate__animated animate__fadeInRight">
+          <Title className="animate__animated animate__fadeInDown" >UI/UX Designer & Web Developer.</Title>
 
           <SubTitle>
             <i>
@@ -156,8 +156,8 @@ export default function About() {
           </SubTitle>
 
           <InfoGrid>
-            {info.map((item) => (
-              <InfoItem key={item.id}>
+            {info.map((item,index) => (
+              <InfoItem className={`animate__animated animate__fadeInUp animate__delay-${index + 1}s`} key={item.id}>
                 <Arrow>▷</Arrow>
                 <Label>{item.name} :</Label>
                 <Value>{item.content}</Value>

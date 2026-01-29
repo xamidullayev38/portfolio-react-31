@@ -14,6 +14,8 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Fade, Slide } from "react-awesome-reveal";
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -109,49 +111,57 @@ const MenuItem = styled.a`
 export default function Sidebar() {
   return (
     <Wrapper>
-      <ProfilePhoto>
-        <img src={img} alt="profile" />
-      </ProfilePhoto>
+      <Fade delay={1000} duration={1500}>
+        <ProfilePhoto>
+          <img src={img} alt="profile" />
+        </ProfilePhoto>
+      </Fade>
 
-      <Title>Alex Smith</Title>
+      <Fade delay={1000} duration={900}>
+        <Title>Alex Smith</Title>
+      </Fade>
 
-      <SocialWrapper>
-        <IconBox href="#">
-          <FaXTwitter />
-        </IconBox>
-        <IconBox href="#">
-          <FaFacebookF />
-        </IconBox>
-        <IconBox href="#">
-          <FaInstagram />
-        </IconBox>
-        <IconBox href="#">
-          <FaSkype />
-        </IconBox>
-        <IconBox href="#">
-          <FaLinkedinIn />
-        </IconBox>
-      </SocialWrapper>
+      <Fade delay={1200} duration={1000}>
+        <SocialWrapper>
+          <IconBox href="#">
+            <FaXTwitter />
+          </IconBox>
+          <IconBox href="#">
+            <FaFacebookF />
+          </IconBox>
+          <IconBox href="#">
+            <FaInstagram />
+          </IconBox>
+          <IconBox href="#">
+            <FaSkype />
+          </IconBox>
+          <IconBox href="#">
+            <FaLinkedinIn />
+          </IconBox>
+        </SocialWrapper>
+      </Fade>
 
       <MenuWrapper>
-        <MenuItem href="#">
-          <FaHome /> Home
-        </MenuItem>
-        <MenuItem href="#">
-          <FaUser /> About
-        </MenuItem>
-        <MenuItem href="#">
-          <FaFileAlt /> Resume
-        </MenuItem>
-        <MenuItem href="#">
-          <FaImage /> Portfolio
-        </MenuItem>
-        <MenuItem href="#">
-          <FaServer /> Services
-        </MenuItem>
-        <MenuItem href="#">
-          <FaEnvelope /> Contact
-        </MenuItem>
+        <Slide direction="left" cascade damping={0.15} delay={1400}>
+          <MenuItem href="#">
+            <FaHome /> Home
+          </MenuItem>
+          <MenuItem href="#">
+            <FaUser /> About
+          </MenuItem>
+          <MenuItem href="#">
+            <FaFileAlt /> Resume
+          </MenuItem>
+          <MenuItem href="#">
+            <FaImage /> Portfolio
+          </MenuItem>
+          <MenuItem href="#">
+            <FaServer /> Services
+          </MenuItem>
+          <MenuItem href="#">
+            <FaEnvelope /> Contact
+          </MenuItem>
+        </Slide>
       </MenuWrapper>
     </Wrapper>
   );

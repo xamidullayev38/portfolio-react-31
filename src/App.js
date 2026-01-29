@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Sidebar from "./layouts/Sidebar";
 import Main from "./layouts/Main";
 import { FaBars } from "react-icons/fa";
+import { Fade } from "react-awesome-reveal";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -73,22 +74,24 @@ export default function App() {
 
   return (
     <>
-      <Wrapper>
-        <SidebarWrapper open={open}>
-          <Sidebar />
-        </SidebarWrapper>
+      <Fade duration={1000}>
+        <Wrapper>
+          <SidebarWrapper open={open}>
+            <Sidebar />
+          </SidebarWrapper>
 
-        <MainWrapper>
-          <MobileBar>
-            <MenuBtn onClick={() => setOpen(true)}>
-              <FaBars />
-            </MenuBtn>
-            <span>Menu</span>
-          </MobileBar>
+          <MainWrapper>
+            <MobileBar>
+              <MenuBtn onClick={() => setOpen(true)}>
+                <FaBars />
+              </MenuBtn>
+              <span>Menu</span>
+            </MobileBar>
 
-          <Main />
-        </MainWrapper>
-      </Wrapper>
+            <Main />
+          </MainWrapper>
+        </Wrapper>
+      </Fade>
 
       <Overlay open={open} onClick={() => setOpen(false)} />
     </>
