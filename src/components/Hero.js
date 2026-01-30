@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import styled from "styled-components";
-import img from "../assets/img/hero-bg.png";
+import img from "../assets/img/hero-bg.webp";
 import "animate.css";
 
 const Wrapper = styled.div`
