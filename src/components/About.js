@@ -2,6 +2,7 @@ import React from "react";
 import SectionTop from "../reusables/SectionTop";
 import styled from "styled-components";
 import img from "../assets/img/about.png";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const title = "About";
 const subtitle =
@@ -10,6 +11,7 @@ const subtitle =
 const Wrappper = styled.section`
   margin: 80px 20px;
 `;
+
 const Content = styled.div`
   display: flex;
   align-items: center;
@@ -35,6 +37,7 @@ const Title = styled.h3`
     font-size: 20px;
   }
 `;
+
 const SubTitle = styled.p`
   font-size: 18px;
   font-weight: 300;
@@ -43,6 +46,7 @@ const SubTitle = styled.p`
     font-size: 16px;
   }
 `;
+
 const Image = styled.img`
   width: 100%;
   max-width: 383px;
@@ -86,90 +90,71 @@ const Label = styled.span`
   font-weight: 700;
   margin-right: 6px;
 `;
-const TextContent = styled.div`
-  flex: 1;
-`;
 
 const Value = styled.span`
   color: #444;
 `;
 
+const TextContent = styled.div`
+  flex: 1;
+`;
+
 export default function About() {
   const info = [
-    {
-      id: 1,
-      name: "Birthday",
-      content: "1 May 1995",
-    },
-    {
-      id: 2,
-      name: "Website",
-      content: "www.example.com",
-    },
-    {
-      id: 3,
-      name: "Phone",
-      content: "+123 456 7890",
-    },
-    {
-      id: 4,
-      name: "City",
-      content: "New York, USA",
-    },
-    {
-      id: 5,
-      name: "Age",
-      content: "30",
-    },
-    {
-      id: 6,
-      name: "Degree",
-      content: "Master",
-    },
-    {
-      id: 7,
-      name: "Email",
-      content: "email@example.com",
-    },
-    {
-      id: 8,
-      name: "Freelance",
-      content: "Available",
-    },
+    { id: 1, name: "Birthday", content: "1 May 1995" },
+    { id: 2, name: "Website", content: "www.example.com" },
+    { id: 3, name: "Phone", content: "+123 456 7890" },
+    { id: 4, name: "City", content: "New York, USA" },
+    { id: 5, name: "Age", content: "30" },
+    { id: 6, name: "Degree", content: "Master" },
+    { id: 7, name: "Email", content: "email@example.com" },
+    { id: 8, name: "Freelance", content: "Available" },
   ];
 
   return (
-    <Wrappper className="animate__animated animate__fadeIn">
+    <Wrappper>
       <SectionTop title={title} subtitle={subtitle} />
 
       <Content>
-        <Image className="animate__animated animate__fadeInLeft" src={img} alt="profile img" />
+        <Slide duration={1500} direction="left" triggerOnce>
+          <Image src={img} alt="profile img" />
+        </Slide>
 
-        <TextContent className="animate__animated animate__fadeInRight">
-          <Title className="animate__animated animate__fadeInDown" >UI/UX Designer & Web Developer.</Title>
+        <Slide duration={1500} direction="right" triggerOnce>
+          <TextContent>
+            <Fade direction="down" triggerOnce>
+              <Title>UI/UX Designer & Web Developer.</Title>
+            </Fade>
 
-          <SubTitle>
-            <i>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </i>
-          </SubTitle>
+            <Fade triggerOnce delay={200}>
+              <SubTitle>
+                <i>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </i>
+              </SubTitle>
+            </Fade>
 
-          <InfoGrid>
-            {info.map((item,index) => (
-              <InfoItem className={`animate__animated animate__fadeInUp animate__delay-${index + 1}s`} key={item.id}>
-                <Arrow>▷</Arrow>
-                <Label>{item.name} :</Label>
-                <Value>{item.content}</Value>
-              </InfoItem>
-            ))}
-          </InfoGrid>
+            <InfoGrid>
+              {info.map((item, index) => (
+                <Fade key={item.id} delay={index * 120} triggerOnce>
+                  <InfoItem>
+                    <Arrow>▷</Arrow>
+                    <Label>{item.name} :</Label>
+                    <Value>{item.content}</Value>
+                  </InfoItem>
+                </Fade>
+              ))}
+            </InfoGrid>
 
-          <SubTitle>
-            Officiis eligendi itaque labore et dolorum mollitia officiis optio
-            vero...
-          </SubTitle>
-        </TextContent>
+            <Fade triggerOnce delay={400}>
+              <SubTitle>
+                Officiis eligendi itaque labore et dolorum mollitia officiis
+                optio vero...
+              </SubTitle>
+            </Fade>
+          </TextContent>
+        </Slide>
       </Content>
     </Wrappper>
   );

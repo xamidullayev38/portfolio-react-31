@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SectionTop from "../reusables/SectionTop";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Wrapper = styled.section`
   padding: 80px 20px;
@@ -115,70 +116,86 @@ const Button = styled.button`
   }
 `;
 
+
 export default function Contact() {
   return (
     <Wrapper>
-      <SectionTop
-        title={"Contact"}
-        subtitle={
-          "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit"
-        }
-      />
+      <Fade direction="up" triggerOnce={false} duration={1000}>
+        <SectionTop
+          title={"Contact"}
+          subtitle={
+            "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit"
+          }
+        />
+      </Fade>
 
       <Container>
-        <Info>
-          <InfoBox>
-            <IconWrap>
-              <FaMapMarkerAlt />
-            </IconWrap>
-            <InfoText>
-              <h4>Address</h4>
-              <p>A108 Adam Street, New York, NY 535022</p>
-            </InfoText>
-          </InfoBox>
+        <Slide direction="left" triggerOnce={false} duration={1200}>
+          <Info>
+            <Fade cascade damping={0.2} triggerOnce={false}>
+              <InfoBox>
+                <IconWrap className="animate__animated animate__pulse animate__infinite animate__slower">
+                  <FaMapMarkerAlt />
+                </IconWrap>
+                <InfoText>
+                  <h4>Address</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </InfoText>
+              </InfoBox>
 
-          <InfoBox>
-            <IconWrap>
-              <FaPhoneAlt />
-            </IconWrap>
-            <InfoText>
-              <h4>Call Us</h4>
-              <p>+1 5589 55488 55</p>
-            </InfoText>
-          </InfoBox>
+              <InfoBox>
+                <IconWrap className="animate__animated animate__pulse animate__infinite animate__slower">
+                  <FaPhoneAlt />
+                </IconWrap>
+                <InfoText>
+                  <h4>Call Us</h4>
+                  <p>+1 5589 55488 55</p>
+                </InfoText>
+              </InfoBox>
 
-          <InfoBox>
-            <IconWrap>
-              <FaEnvelope />
-            </IconWrap>
-            <InfoText>
-              <h4>Email Us</h4>
-              <p>info@example.com</p>
-            </InfoText>
-          </InfoBox>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5046.67982833375!2d69.20225715677068!3d41.22670006668634!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae618fd6e20b9b%3A0xf99b9dffcbef9429!2s2-Bekat!5e0!3m2!1sen!2s!4v1769700312368!5m2!1sen!2s"
-            width="100%"
-            height="300"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </Info>
+              <InfoBox>
+                <IconWrap className="animate__animated animate__pulse animate__infinite animate__slower">
+                  <FaEnvelope />
+                </IconWrap>
+                <InfoText>
+                  <h4>Email Us</h4>
+                  <p>info@example.com</p>
+                </InfoText>
+              </InfoBox>
+            </Fade>
 
-        <Form>
-          <Row>
-            <Input type="text" placeholder="Your Name" required />
-            <Input type="email" placeholder="Your Email" required />
-          </Row>
+            <Fade direction="up" delay={300} triggerOnce={false}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5046.67982833375!2d69.20225715677068!3d41.22670006668634!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae618fd6e20b9b%3A0xf99b9dffcbef9429!2s2-Bekat!5e0!3m2!1sen!2s!4v1769700312368!5m2!1sen!2s"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: "10px" }}
+                loading="lazy"
+              />
+            </Fade>
+          </Info>
+        </Slide>
 
-          <Input type="text" placeholder="Subject" required />
+        {/* RIGHT FORM SIDE */}
+        <Slide direction="right" triggerOnce={false} duration={1200}>
+          <Form className="animate__animated animate__fadeInUp">
+            <Row>
+              <Input type="text" placeholder="Your Name" required />
+              <Input type="email" placeholder="Your Email" required />
+            </Row>
 
-          <TextArea rows="6" placeholder="Message" required />
+            <Input type="text" placeholder="Subject" required />
 
-          <Button type="submit">Send Message</Button>
-        </Form>
+            <TextArea rows="6" placeholder="Message" required />
+
+            <Button
+              type="submit"
+              className="animate__animated animate__pulse animate__infinite animate__slow"
+            >
+              Send Message
+            </Button>
+          </Form>
+        </Slide>
       </Container>
     </Wrapper>
   );

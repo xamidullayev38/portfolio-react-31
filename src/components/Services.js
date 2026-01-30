@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { FaBriefcase, FaClipboardCheck, FaChartBar, FaBinoculars, FaSun, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaBriefcase,
+  FaClipboardCheck,
+  FaChartBar,
+  FaBinoculars,
+  FaSun,
+  FaCalendarAlt,
+} from "react-icons/fa";
 import SectionTop from "../reusables/SectionTop";
+import { Fade } from "react-awesome-reveal";
 
 const Wrapper = styled.section`
   padding: 80px 20px;
@@ -75,33 +83,39 @@ export default function Services() {
     {
       icon: <FaBriefcase />,
       title: "Lorem Ipsum",
-      text: "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident"
+      text:
+        "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
     },
     {
       icon: <FaClipboardCheck />,
       title: "Dolor Sitema",
-      text: "Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata"
+      text:
+        "Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata",
     },
     {
       icon: <FaChartBar />,
       title: "Sed ut perspiciatis",
-      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+      text:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
     },
     {
       icon: <FaBinoculars />,
       title: "Magni Dolores",
-      text: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+      text:
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
     {
       icon: <FaSun />,
       title: "Nemo Enim",
-      text: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque"
+      text:
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque",
     },
     {
       icon: <FaCalendarAlt />,
       title: "Eiusmod Tempor",
-      text: "Et harum quidem rerum facilis est et expedita distinctio Nam libero tempore, cum soluta nobis est eligendi"
-    }
+      text:
+        "Et harum quidem rerum facilis est et expedita distinctio Nam libero tempore, cum soluta nobis est eligendi",
+    },
   ];
 
   return (
@@ -113,13 +127,20 @@ export default function Services() {
 
       <Grid>
         {services.map((service, index) => (
-          <Card key={index}>
-            <IconWrap>{service.icon}</IconWrap>
-            <Content>
-              <Title>{service.title}</Title>
-              <Text>{service.text}</Text>
-            </Content>
-          </Card>
+          <Fade
+            key={index}
+            direction="up"
+            delay={index * 120}
+            triggerOnce
+          >
+            <Card>
+              <IconWrap>{service.icon}</IconWrap>
+              <Content>
+                <Title>{service.title}</Title>
+                <Text>{service.text}</Text>
+              </Content>
+            </Card>
+          </Fade>
         ))}
       </Grid>
     </Wrapper>
