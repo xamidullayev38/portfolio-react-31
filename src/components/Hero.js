@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styled from "styled-components";
 import img from "../assets/img/hero-bg.png";
+import "animate.css";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -29,10 +30,6 @@ const Wrapper = styled.div`
 const Content = styled.div`
   position: relative;
   z-index: 1;
-
-  @media (max-width: 768px) {
-    padding-left: 0;
-  }
 `;
 
 const Title = styled.h1`
@@ -40,26 +37,16 @@ const Title = styled.h1`
   color: white;
   margin-bottom: 10px;
 
-  @media (max-width: 992px) {
-    font-size: 56px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 38px;
-  }
+  @media (max-width: 992px) { font-size: 56px; }
+  @media (max-width: 600px) { font-size: 38px; }
 `;
 
 const SubTitle = styled.p`
   font-size: 28px;
   color: white;
 
-  @media (max-width: 992px) {
-    font-size: 22px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 18px;
-  }
+  @media (max-width: 992px) { font-size: 22px; }
+  @media (max-width: 600px) { font-size: 18px; }
 `;
 
 const Highlight = styled.span`
@@ -70,24 +57,17 @@ const Highlight = styled.span`
   animation: blink 0.8s infinite;
 
   @keyframes blink {
-    0% {
-      border-color: #149ddd;
-    }
-    50% {
-      border-color: transparent;
-    }
-    100% {
-      border-color: #149ddd;
-    }
-  }
-
-  @media (max-width: 600px) {
-    border-right: 2px solid #149ddd;
+    0% { border-color: #149ddd; }
+    50% { border-color: transparent; }
+    100% { border-color: #149ddd; }
   }
 `;
 
 export default function Hero() {
-  const words = ["Developer", "Designer", "Freelancer", "Photographer"];
+  const words = useMemo(
+    () => ["Developer", "Designer", "Freelancer", "Photographer"],
+    []
+  );
 
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -96,6 +76,7 @@ export default function Hero() {
 
   useEffect(() => {
     const currentWord = words[wordIndex];
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         setText(currentWord.substring(0, text.length + 1));
@@ -120,15 +101,15 @@ export default function Hero() {
 
   return (
     <Wrapper>
-    <Content>
-      <Title className="animate__animated animate__fadeInDown">
-        Alex Smith
-      </Title>
+      <Content>
+        <Title className="animate__animated animate__fadeInDown">
+          Alex Smith
+        </Title>
 
-      <SubTitle className="animate__animated animate__fadeInUp animate__delay-1s">
-        I'm <Highlight>{text}</Highlight>
-      </SubTitle>
-    </Content>
-  </Wrapper>
+        <SubTitle className="animate__animated animate__fadeInUp animate__delay-1s">
+          I'm <Highlight>{text}</Highlight>
+        </SubTitle>
+      </Content>
+    </Wrapper>
   );
 }

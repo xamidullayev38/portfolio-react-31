@@ -74,7 +74,6 @@ function Counter({ target, duration = 1500 }) {
     return () => observer.disconnect();
 
     function animateCount() {
-      let start = 0;
       const startTime = performance.now();
 
       function update(currentTime) {
